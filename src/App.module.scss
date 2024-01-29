@@ -1,0 +1,90 @@
+$main: #f7fcfc;
+$accent: #1d232a;
+$accent2: #292d32;
+$accent3: #3c3633;
+$textMain: #c0c4c9;
+
+.sidebar {
+  flex: 0.4;
+  background-image: linear-gradient(to top, $accent, $accent2);
+  max-width: 300px;
+  transition: 0.5s;
+  color: $textMain;
+
+  &.close {
+    max-width: 0;
+  }
+}
+
+.main {
+  flex: 1;
+  background-color: $main;
+}
+
+.openBtn,
+.closeBtn {
+  width: 30px;
+  height: 80px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100;
+  opacity: 0.5;
+
+  & .pt1,
+  & .pt2 {
+    width: 4px;
+    height: 20px;
+    background-color: $accent;
+    z-index: 200;
+    transition: 0.2s;
+  }
+
+  & .pt1 {
+    border-radius: 2px 2px 0 0;
+  }
+
+  & .pt2 {
+    border-radius: 0 0 2px 2px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.openBtn {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover .pt1 {
+    transform: rotate(-20deg) translateY(1.5px);
+    height: 22px;
+    border-radius: 2px 2px 0.7px 0;
+  }
+
+  &:hover .pt2 {
+    transform: rotate(20deg) translateY(-1.5px);
+    height: 22px;
+    border-radius: 0 0.7px 2px 2px;
+  }
+}
+
+.closeBtn {
+  &:hover .pt1 {
+    transform: rotate(20deg) translateY(1.5px);
+    height: 22px;
+    border-radius: 2px 2px 0 0.7px;
+  }
+
+  &:hover .pt2 {
+    transform: rotate(-20deg) translateY(-1.5px);
+    height: 22px;
+    border-radius: 0.7px 0 2px 2px;
+  }
+}
