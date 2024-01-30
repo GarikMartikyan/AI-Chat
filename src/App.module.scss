@@ -55,12 +55,13 @@ $textMain: #c0c4c9;
   &:hover {
     opacity: 1;
   }
-}
 
-.openBtn {
   &:hover {
     cursor: pointer;
   }
+}
+
+.openBtn {
 
   &:hover .pt1 {
     transform: rotate(-20deg) translateY(1.5px);
