@@ -1,23 +1,14 @@
-import classes from "./SidebarToggle.module.scss";
+import classes from "./SidebarToggleButton.module.scss";
 import { useEffect, useState } from "react";
+import { getTitleByOS } from "../../assets/functionality/ToggleButtonFunctionality.js";
 
-export default function SidebarToggle({ toggleFunc, sidebarOpen }) {
+export default function SidebarToggleButton({ toggleFunc, sidebarOpen }) {
   const [title, setTitle] = useState("Close");
 
   let toggle = sidebarOpen ? classes.closeBtn : classes.openBtn;
 
   useEffect(() => {
-    const operatingSystem = navigator.platform;
-    if (
-      operatingSystem.toLowerCase().includes("win") ||
-      operatingSystem.toLowerCase().includes("linux")
-    ) {
-      setTitle("Toggle Sidebar - Ctrl ⇧ S");
-    } else if (operatingSystem.toLowerCase().includes("mac")) {
-      setTitle("Toggle Sidebar - ⌘ ⇧ S");
-    } else {
-      setTitle("Toggle Sidebar");
-    }
+    setTitle(getTitleByOS());
 
     document.addEventListener("keydown", handleKeyPress);
 

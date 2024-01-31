@@ -1,23 +1,14 @@
-import classes from "./App.module.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import SidebarToggle from "./components/SidebarToggle/SidebarToggle.jsx";
+import SidebarToggleButton from "./components/SidebarToggleButton/SidebarToggleButton.jsx";
+import MainContent from "./components/MainContent/MainContent.jsx";
+import { toggleClasses } from "./assets/functionality/AppFunctionality.js";
 
 function App() {
   console.log("app render");
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  let toggle;
-  let sidebar;
-  let main;
-
-  if (sidebarOpen) {
-    sidebar = classes.sidebar;
-    main = classes.main;
-  } else {
-    sidebar = `${classes.sidebar} ${classes.close}`;
-    main = `${classes.main} ${classes.full}`;
-  }
+  const { main, sidebar } = toggleClasses(sidebarOpen);
 
   return (
     <>
@@ -25,10 +16,11 @@ function App() {
         <Sidebar />
       </nav>
       <main className={main}>
-        <SidebarToggle
+        <SidebarToggleButton
           sidebarOpen={sidebarOpen}
           toggleFunc={() => setSidebarOpen((prv) => !prv)}
         />
+        <MainContent />
       </main>
     </>
   );
