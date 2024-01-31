@@ -13,11 +13,12 @@ body {
 }
 
 #root {
+  height: 100vh;
+  padding: 0;
+  background: $bgLight;
   display: flex;
   justify-content: right;
   position: relative;
-  padding: 0;
-  height: 100vh;
   overflow: hidden;
 }
 

@@ -1,0 +1,24 @@
+import { useEffect } from "react";
+
+export default function (textareaRef) {
+  useEffect(function () {
+    const textarea = textareaRef.current;
+
+    function textareaResize() {
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+
+    textarea.addEventListener("input", textareaResize);
+    const resizeObserver = new ResizeObserver(() => {
+      textareaResize();
+    });
+
+    resizeObserver.observe(textarea);
+
+    return () => {
+      resizeObserver.disconnect();
+      textarea.removeEventListener("input", textareaResize);
+    };
+  }, []);
+}

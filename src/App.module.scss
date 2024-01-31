@@ -1,6 +1,6 @@
 @import "assets/styles/colors";
 
-$transition: 0.5s;
+$transition: 400ms;
 .sidebar {
   background-image: linear-gradient(to top, $bgDark, $bgDarkAccent);
   position: absolute;
@@ -8,6 +8,10 @@ $transition: 0.5s;
   height: 100%;
   top: 0;
   left: 0;
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
   transition: $transition;
 
   &.close {
@@ -17,6 +21,11 @@ $transition: 0.5s;
 
 .main {
   width: calc(100% - 300px);
+
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
   transition: $transition;
 
   &.full {
