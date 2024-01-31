@@ -5,6 +5,7 @@
   padding: 10px;
   display: flex;
   align-items: center;
+  gap: 10px;
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
@@ -17,7 +18,7 @@
   }
 
   span {
-    max-width: calc(230px - 1.4rem);
+    flex: 1;
     white-space: nowrap;
     text-align: left;
     font-size: 1rem;
@@ -28,7 +29,6 @@
   }
 
   svg {
-    margin-right: 10px;
     width: 1.4rem;
     height: 1.4rem;
   }

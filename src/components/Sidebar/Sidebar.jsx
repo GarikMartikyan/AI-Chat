@@ -14,7 +14,7 @@ export default function Sidebar({ chats }) {
         </div>
         <section className={classes.chats}>
           <h1>Chats</h1>
-          <div>
+          <div className={classes.chatContainer}>
             {new Array(15).fill("").map((item, index) => (
               <ChatTitle key={index} />
             ))}

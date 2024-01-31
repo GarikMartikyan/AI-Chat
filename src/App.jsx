@@ -7,7 +7,6 @@ import { toggleClasses } from "./assets/functionality/AppFunctionality.js";
 function App() {
   console.log("app render");
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
   const { main, sidebar } = toggleClasses(sidebarOpen);
 
   return (
@@ -17,7 +16,7 @@ function App() {
       </nav>
       <main className={main}>
         <SidebarToggleButton
-          sidebarOpen={sidebarOpen}
+          isSidebarOpen={sidebarOpen}
           toggleFunc={() => setSidebarOpen((prv) => !prv)}
         />
         <MainContent />

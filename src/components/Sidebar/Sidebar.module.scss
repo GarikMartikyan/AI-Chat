@@ -51,8 +51,8 @@
       margin-top: 30px;
       overflow: hidden;
 
-      > div {
-        max-height: calc(100% - 1.3rem - 20px);
+      .chatContainer {
+        max-height: calc(100% - 3rem);
         padding: 0 20px;
         overflow: auto;
       }
