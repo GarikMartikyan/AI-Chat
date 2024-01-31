@@ -1,23 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
 
-$main: #eeedeb;
-$accent: #747264;
-$accent2: #e0ccbe;
-$accent3: #3c3633;
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
 
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
+  height: 100vh;
 }
 
 #root {
   display: flex;
-  background-color: $main;
+  justify-content: right;
   position: relative;
   padding: 0;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 }

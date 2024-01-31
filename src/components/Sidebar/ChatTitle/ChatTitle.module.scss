@@ -1,0 +1,35 @@
+@import "src/assets/styles/colors";
+
+.chat {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 150ms;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: rgb(#fff, 0.07);
+    color: $textLightHov;
+  }
+
+  span {
+    max-width: calc(230px - 1.4rem);
+    white-space: nowrap;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+  svg {
+    margin-right: 10px;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}

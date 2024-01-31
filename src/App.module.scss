@@ -1,31 +1,36 @@
-$main: #f7fcfc;
-$accent: #1d232a;
-$accent2: #292d32;
-$accent3: #3c3633;
-$textMain: #c0c4c9;
+@import "assets/styles/colors";
 
+$transition: 0.5s;
 .sidebar {
-  flex: 0.4;
-  background-image: linear-gradient(to top, $accent, $accent2);
-  max-width: 300px;
-  transition: 0.5s;
-  color: $textMain;
+  background-image: linear-gradient(to top, $bgDark, $bgDarkAccent);
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: $transition;
 
   &.close {
-    max-width: 0;
+    transform: translateX(-100%);
   }
 }
 
 .main {
-  flex: 1;
-  background-color: $main;
+  width: calc(100% - 300px);
+  transition: $transition;
+
+  &.full {
+    width: 100%;
+  }
 }
+
+///////////////////////////////////////////////////////////////////
 
 .openBtn,
 .closeBtn {
   width: 30px;
   height: 80px;
-  position: fixed;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -39,7 +44,7 @@ $textMain: #c0c4c9;
   & .pt2 {
     width: 4px;
     height: 20px;
-    background-color: $accent;
+    background-color: $bgDark;
     z-index: 200;
     transition: 0.2s;
   }
@@ -63,29 +68,29 @@ $textMain: #c0c4c9;
 
 .openBtn {
 
-  &:hover .pt1 {
-    transform: rotate(-20deg) translateY(1.5px);
+  & .pt1 {
+    transform: rotate(-20deg) translateY(2px);
     height: 22px;
-    border-radius: 2px 2px 0.7px 0;
+    border-radius: 2px 2px 1.5px 0;
   }
 
-  &:hover .pt2 {
-    transform: rotate(20deg) translateY(-1.5px);
+  & .pt2 {
+    transform: rotate(20deg) translateY(-2px);
     height: 22px;
-    border-radius: 0 0.7px 2px 2px;
+    border-radius: 0 1.5px 2px 2px;
   }
 }
 
 .closeBtn {
   &:hover .pt1 {
-    transform: rotate(20deg) translateY(1.5px);
+    transform: rotate(20deg) translateY(2px);
     height: 22px;
-    border-radius: 2px 2px 0 0.7px;
+    border-radius: 2px 2px 0 1.5px;
   }
 
   &:hover .pt2 {
-    transform: rotate(-20deg) translateY(-1.5px);
+    transform: rotate(-20deg) translateY(-2px);
     height: 22px;
-    border-radius: 0.7px 0 2px 2px;
+    border-radius: 1.5px 0 2px 2px;
   }
 }
