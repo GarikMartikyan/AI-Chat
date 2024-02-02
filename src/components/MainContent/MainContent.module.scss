@@ -1,4 +1,5 @@
 @import "src/assets/styles/colors";
+@import "src/assets/styles/transitions";
 
 .wrapper {
   width: 100%;
@@ -12,7 +13,7 @@
     display: flex;
     align-items: center;
     background-color: $bgLightHeader;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 11px 50px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 11px 50px 0;
 
     h1 {
       color: $icon;
@@ -26,8 +27,6 @@
   .chatWindow {
     flex: 1;
     width: 100%;
-    //background-color: #1d232a;
-
   }
 
   .message {
@@ -36,65 +35,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .container {
-      width: 100%;
-      max-width: 50rem;
-      padding: 20px 30px;
-
-      form {
-        width: 100%;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-
-
-        textarea {
-          flex: 1;
-          font-size: 1.1rem;
-          resize: none;
-          overflow-y: auto;
-          max-height: 10rem;
-          border: none;
-          background-color: rgb(0, 0, 0, 0);
-          color: $icon;
-
-          &:focus {
-            outline: none;
-          }
-
-          &::placeholder {
-            color: #999;
-          }
-
-
-        }
-
-        button {
-          width: 3rem;
-          height: 3rem;
-          border-radius: 3rem;
-          background-color: rgb($icon, 0.9);
-          padding: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-
-          svg {
-            padding-left: .1rem;
-            width: 1.7rem;
-            height: 1.7rem;
-            color: $bgLightTextarea;
-          }
-
-          &:hover {
-            background-color: $iconHov;
-            cursor: pointer;
-          }
-        }
-
-      }
-    }
   }
 }

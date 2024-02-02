@@ -1,55 +1,45 @@
 @import "src/assets/styles/colors";
+@import "src/assets/styles/transitions";
 
 .container {
-  width: 100%;
   max-width: 50rem;
+  width: 100%;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  //background: #f4f7fa;
 
   form {
-    display: flex;
     width: 100%;
-    //border: 1px solid $bgDark;
-    padding: 5px 10px;
-    //border-radius: 10px;
-
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
 
     textarea {
-      height: 2.5rem;
-      font-size: 1.1rem;
-      color: $textDark;
       flex: 1;
+      display: flex;
+      font-size: 1rem;
+      justify-content: center;
+      align-items: center;
       border: none;
-      background: rgb(0, 0, 0, 0);
-      padding: 0;
       resize: none;
-      display: block;
-      vertical-align: middle;
+      max-height: 10rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      background-color: rgba(0, 0, 0, 0);
 
       &:focus {
-        border: none;
         outline: none;
+      }
+
+      ::placeholder {
+        color: $textBackground;
       }
     }
 
     button {
-      width: 2.5rem;
-      height: 2.5rem;
-      padding-right: 0.1rem;
       border: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 100%;
-      background: $iconHov;
-
-      svg {
-        color: $bgLight;
-      }
+      height: 3rem;
     }
-
   }
 }

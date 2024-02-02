@@ -5,7 +5,7 @@ export default function (textareaRef) {
     const textarea = textareaRef.current;
 
     function textareaResize() {
-      textarea.style.height = "auto";
+      textarea.style.height = "1.5rem";
       textarea.style.height = textarea.scrollHeight + "px";
     }
 
@@ -15,6 +15,7 @@ export default function (textareaRef) {
     });
 
     resizeObserver.observe(textarea);
+    // Get the root element (html)
 
     return () => {
       resizeObserver.disconnect();

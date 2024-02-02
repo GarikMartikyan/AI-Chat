@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/transitions";
 
 $transition: 400ms;
 .sidebar {
@@ -8,11 +9,7 @@ $transition: 400ms;
   height: 100%;
   top: 0;
   left: 0;
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  -ms-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
+  @extend %transition04;
 
   &.close {
     transform: translateX(-100%);
@@ -21,12 +18,8 @@ $transition: 400ms;
 
 .main {
   width: calc(100% - 300px);
+  @extend %transition04;
 
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  -ms-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
 
   &.full {
     width: 100%;
