@@ -15,7 +15,6 @@ export default function (textareaRef) {
     });
 
     resizeObserver.observe(textarea);
-    // Get the root element (html)
 
     return () => {
       resizeObserver.disconnect();
