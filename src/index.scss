@@ -10,12 +10,12 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  background: $bgLight;
 }
 
 #root {
   height: 100vh;
   padding: 0;
-  background: $bgLight;
   display: flex;
   justify-content: right;
   position: relative;
