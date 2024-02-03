@@ -5,14 +5,21 @@
   display: flex;
   align-items: center;
   padding: 10px 0;
+  @extend %transition1;
+
+  .message {
+    max-width: 70%;
+    font-weight: 300;
+    //padding: 20px;
+    max-height: max-content;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+
+    .text {
+      padding: 20px;
+    }
+  }
 }
 
-.message {
-  max-width: 70%;
-  font-weight: 300;
-  //padding: 20px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
-}
 
 .chat {
   justify-content: flex-start;
@@ -21,6 +28,7 @@
     border-radius: 4px 25px 25px 25px;
     color: $textBlack;
     background-color: $messageAccent;
+
   }
 }
 

@@ -1,7 +1,6 @@
 @import "assets/styles/colors";
 @import "assets/styles/transitions";
 
-$transition: 400ms;
 .sidebar {
   background-image: linear-gradient(to top, $bgDark, $bgDarkAccent);
   position: absolute;
@@ -9,11 +8,6 @@ $transition: 400ms;
   height: 100%;
   top: 0;
   left: 0;
-  padding: 20px 0;
-  color: $textLight;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   @extend %transition04;
 
   &.close {

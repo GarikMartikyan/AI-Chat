@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-export default function (textareaRef) {
+export default function (TextareaRef) {
   useEffect(function () {
-    const textarea = textareaRef.current;
+    const textarea = TextareaRef.current;
 
     function textareaResize() {
       textarea.style.height = "1.5rem";

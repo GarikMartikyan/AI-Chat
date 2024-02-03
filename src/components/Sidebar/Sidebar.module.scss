@@ -3,7 +3,11 @@
 .container {
   width: 100%;
   height: 100%;
+  padding: 20px 0 40px 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: $textLight;
 
   .header {
     display: flex;
@@ -39,12 +43,14 @@
 
   & .chats {
     width: 100%;
-    height: calc(100% - 140px);
+    flex: 1;
     margin-top: 30px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     .chatContainer {
-      max-height: calc(100% - 3rem);
+      flex: 1;
       padding: 0 20px;
       overflow: auto;
     }

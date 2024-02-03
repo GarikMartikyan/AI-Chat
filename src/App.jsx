@@ -13,12 +13,12 @@ function App() {
     <>
       <nav className={sidebar}>
         <Sidebar />
-      </nav>
-      <main className={main}>
         <SidebarToggleButton
           isSidebarOpen={sidebarOpen}
           toggleFunc={() => setSidebarOpen((prv) => !prv)}
         />
+      </nav>
+      <main className={main}>
         <MainContent />
       </main>
     </>

@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 template/
-test.html
+test/
