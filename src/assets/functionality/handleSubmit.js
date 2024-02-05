@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import data from "../../../Data and Logic/classes/data.js";
+import data from "../../../Data and Logic/classes/dataControl.js";
 
 export default function handleSubmit(Reference, Context) {
   const { inputRef, buttonRef, formRef } = Reference;
@@ -25,13 +25,16 @@ export default function handleSubmit(Reference, Context) {
       onSubmitActions();
     }
 
-    function onSubmitActions() {
+    async function onSubmitActions() {
       if (!input.value.trim().length) return false;
+
+      const message = input.value;
+
       input.focus();
-      data.deliverMessage(input.value, setChat);
       input.value = "";
       button.disabled = true;
       input.style.height = "1.5rem";
+      await data.deliverMessage(message, setChat);
     }
 
     return () => {

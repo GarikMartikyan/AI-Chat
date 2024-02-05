@@ -1,11 +1,11 @@
 import classes from "./ChatTitle.module.scss";
 import { MessageSquareText } from "lucide-react";
 
-export default function ChatTitle() {
+export default function ChatTitle({ children }) {
   return (
     <div className={classes.chat}>
       <MessageSquareText />
-      <span>First Message long message</span>
+      <span>{children}</span>
     </div>
   );
 }

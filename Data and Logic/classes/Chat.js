@@ -27,7 +27,6 @@ export default class Chat {
 
     const chat = await this.#model.startChat({
       history: this.history,
-      // generationConfig: { maxOutputTokens: 500 },
     });
     const result = await chat.sendMessage(Message);
     const response = await result.response;
@@ -41,9 +40,11 @@ export default class Chat {
         this.#chatMessage(...args);
       })
       .catch(() => {
-        console.error("Something went wrong"); ///////////////////////////
-        const reload = confirm("Something went wrong. \nPlease reload page");
-        if (reload) window.location.reload();
+        console.error(
+          "Something went wrong. This probably happened because you sent a new question without receiving the previous answer.",
+        ); ///////////////////////////
+        const reload = alert("Something went wrong. \nPlease reload page");
+        window.location.reload();
       });
 
     const myMessage = new MessageClass(this.#id++, MyMessageText, "user");

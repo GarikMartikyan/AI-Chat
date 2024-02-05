@@ -6,17 +6,17 @@
   white-space: pre-wrap;
   word-break: break-word;
 
-  //span {
-  //  display: inline-flex;
-  //  align-items: center;
-  //  justify-content: center;
-  //  font-size: 5px;
-  //  vertical-align: middle;
-  //  width: 5px;
-  //  height: 5px;
-  //  background-color: $icon;
-  //  border-radius: 1rem;
-  //}
+  span {
+    display: inline-block;
+    overflow: hidden;
+    color: $iconHov;
+    vertical-align: middle;
+    width: 0.36rem;
+    height: 0.36rem;
+    margin: 0 3px;
+    background-color: $iconHov;
+    border-radius: 100%;
+  }
 
   b {
     font-weight: 400;

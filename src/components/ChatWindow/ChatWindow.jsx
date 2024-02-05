@@ -1,7 +1,7 @@
 import classes from "./ChatWindow.module.scss";
 import MessageInput from "./MessageInput/MessageInput.jsx";
 import MessageWindow from "./MessageWindow/MessageWindow.jsx";
-import MessageProvider from "../../assets/Contexts/messageContext.jsx";
+import MessageProvider from "../../assets/Contexts/MessageContext.jsx";
 import {useRef} from "react"; // chat.deliverMessage("Can you help me please?");
 
 // chat.deliverMessage("Can you help me please?");
