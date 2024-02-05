@@ -13,39 +13,41 @@ export default class Chat {
     this.history = [];
   }
 
-  deliverMessage(MyMessageText, SetMessage) {
-    // debugger;
-    this.#messageToServer(MyMessageText, SetMessage).catch(() =>
-      console.error("sxal a axper"),
-    );
-    const myMessage = new MessageClass(this.#id++, MyMessageText, "user");
-    this.history.push(myMessage);
-    SetMessage(() => [...this.history]);
-  }
-
-  #chatMessage(ChatMessage) {
+  #chatMessage(ChatMessage, SetMessage) {
     const chatMessage = new MessageClass(this.#id++, ChatMessage, "model");
     this.history.push(chatMessage);
+    SetMessage(() => [...this.history]);
+
+    console.log(chatMessage.parts);
+    console.log(this.history);
   }
 
   async #messageToServer(Message, SetMessage) {
     console.log("Message render..."); ///////////////////////////
-    SetMessage(() => [...this.history]);
+
     const chat = await this.#model.startChat({
       history: this.history,
       // generationConfig: { maxOutputTokens: 500 },
     });
-
-    // const typing = new MessageClass(this.#id++, "", "model");
-    // this.history.push(typing);
-
     const result = await chat.sendMessage(Message);
     const response = await result.response;
     const chatMessage = response.text();
-    this.#chatMessage(chatMessage);
-    console.log(chatMessage);
-    console.log("End");
-    SetMessage(() => [...this.history]);
-    console.log("History ", this.history);
+    return [chatMessage, SetMessage];
+  }
+
+  deliverMessage(MyMessageText, SetMessage) {
+    this.#messageToServer(MyMessageText, SetMessage)
+      .then((args) => {
+        this.#chatMessage(...args);
+      })
+      .catch(() => {
+        console.error("Something went wrong"); ///////////////////////////
+        const reload = confirm("Something went wrong. \nPlease reload page");
+        if (reload) window.location.reload();
+      });
+
+    const myMessage = new MessageClass(this.#id++, MyMessageText, "user");
+    this.history.push(myMessage);
+    SetMessage(() => this.history);
   }
 }
