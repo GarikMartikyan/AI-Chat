@@ -14,7 +14,6 @@ export default class Chat {
   }
 
   deliverMessage(MyMessage, SetMessage) {
-    console.log("History inside Delivery", this.history);
     this.#messageToServer(MyMessage, SetMessage);
     const myMessage = new MessageClass(this.#id++, MyMessage, "user");
     this.history.push(myMessage);
@@ -35,13 +34,12 @@ export default class Chat {
     });
     const result = await chat.sendMessage(Message);
     const response = await result.response;
-    const text = response.text();
-    this.#chatMessage(text);
-    console.log(text);
+    const chatMessage = response.text();
+    // const chatMessage = text;
+    this.#chatMessage(chatMessage);
+    console.log(chatMessage);
     console.log("End");
     SetMessage(() => [...this.history]);
-    console.log(this.history);
-
-    //////////////////setfunc(this.history)
+    console.log("History ", this.history);
   }
 }

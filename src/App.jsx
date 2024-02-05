@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import SidebarToggleButton from "./components/SidebarToggleButton/SidebarToggleButton.jsx";
-import MainContent from "./components/MainContent/MainContent.jsx";
+import ChatWindow from "./components/ChatWindow/ChatWindow.jsx";
 import { toggleClasses } from "./assets/functionality/AppFunctionality.js";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         />
       </nav>
       <main className={main}>
-        <MainContent />
+        <ChatWindow />
       </main>
     </>
   );

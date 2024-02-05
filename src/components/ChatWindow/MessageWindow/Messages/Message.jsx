@@ -1,23 +1,18 @@
 import classes from "./Message.module.scss";
 import { useState } from "react";
+import TypingAnimation from "./TypingAnimation/TypingAnimation.jsx";
+import Text from "./Text/Text.jsx";
 
 export default function Message({ children, person }) {
   const [showAnimation, setShowAnimation] = useState(children === false);
 
   const container = person === "user" ? classes.user : classes.chat;
-  const typingAnimation = (
-    <div className={classes.typingAnimation}>
-      <div className={classes.dot}></div>
-      <div className={classes.dot}></div>
-      <div className={classes.dot}></div>
-    </div>
-  );
-  const text = <div className={classes.text}>{children}</div>;
+
   return (
     <div className={container}>
       <div className={classes.message}>
-        {!showAnimation && text}
-        {showAnimation && typingAnimation}
+        {!showAnimation && <Text children={children} />}
+        {showAnimation && <TypingAnimation />}
       </div>
     </div>
   );

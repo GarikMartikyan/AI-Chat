@@ -17,6 +17,4 @@ class Data {
 
 const data = new Data();
 const chat = data.createChat("First Chat");
-// chat.deliverMessage("Do you remember context?");
-// console.log(chat);
 export default chat;

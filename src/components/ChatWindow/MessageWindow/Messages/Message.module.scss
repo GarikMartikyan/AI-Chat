@@ -1,0 +1,56 @@
+@import "src/assets/styles/colors";
+@import "src/assets/styles/transitions";
+
+.chat, .user {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  @extend %transition1;
+
+  .message {
+    max-width: 70%;
+    font-weight: 300;
+    max-height: max-content;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+
+
+    //.text {
+    //  padding: 15px 20px;
+    //  margin: 0;
+    //  white-space: pre-wrap;
+    //  word-break: break-word;
+    //
+    //
+    //  .dot {
+    //    width: 0.4rem;
+    //    height: 0.4rem;
+    //    background-color: $icon;
+    //    border-radius: 1rem;
+    //  }
+    //
+    //}
+  }
+}
+
+
+.chat {
+  justify-content: flex-start;
+
+  .message {
+    border-radius: 4px 25px 25px 25px;
+    color: $textBlack;
+    background-color: $messageAccent;
+
+  }
+}
+
+.user {
+  justify-content: flex-end;
+
+  .message {
+    border-radius: 25px 4px 25px 25px;
+    color: $messageAccent;
+    background-color: $message;
+    display: flex;
+  }
+}

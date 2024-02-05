@@ -31,7 +31,6 @@ export default function handleSubmit(Reference, Context) {
       data.deliverMessage(input.value, setChat);
       input.value = "";
       button.disabled = true;
-      console.log("submit works");
       input.style.height = "1.5rem";
     }
 
