@@ -1,6 +1,7 @@
 import Chat from "./Chat.js";
 
 class Data {
+  #id = 0;
   #data = [];
 
   getData() {
@@ -8,9 +9,7 @@ class Data {
   }
 
   createChat(ChatName) {
-    const id = this.#data.length;
-
-    const chat = new Chat(id, ChatName);
+    const chat = new Chat(this.#id, ChatName);
     this.#data.push(chat);
     return chat;
   }
@@ -18,4 +17,6 @@ class Data {
 
 const data = new Data();
 const chat = data.createChat("First Chat");
+// chat.deliverMessage("Do you remember context?");
+// console.log(chat);
 export default chat;

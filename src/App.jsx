@@ -5,7 +5,7 @@ import MainContent from "./components/MainContent/MainContent.jsx";
 import { toggleClasses } from "./assets/functionality/AppFunctionality.js";
 
 function App() {
-  console.log("app render");
+  console.log("App Rendered");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { main, sidebar } = toggleClasses(sidebarOpen);
 

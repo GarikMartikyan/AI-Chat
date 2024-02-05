@@ -1,26 +1,20 @@
 import classes from "./ChatWindow.module.scss";
 import Message from "./Messages/Message.jsx";
+import { useChatData } from "../../../assets/Contexts/messageContext.jsx";
 
-export default function ChatWindow({ messages }) {
-  // messages = data.getData();
-  messages = [];
+export default function ChatWindow() {
+  const { chat, setChat } = useChatData();
 
-  const isThereMessages = Boolean(messages.length);
+  const isThereMessages = Boolean(chat.length);
   const welcome = <div className={classes.welcome}>How can I help you?</div>;
   return (
     <section className={classes.container}>
-      {isThereMessages && (
-        <div>
-          <Message person={"user"} />
-          <Message person={"chat"} />
-          <Message person={"user"} />
-          <Message person={"chat"} />
-          <Message person={"user"} />
-          <Message person={"chat"} />
-          <Message person={"user"} />
-          <Message person={"chat"} />
-        </div>
-      )}
+      {isThereMessages &&
+        chat.map((item) => {
+          return (
+            <Message key={item.id} children={item.parts} person={item.role} />
+          );
+        })}
       {!isThereMessages && welcome}
     </section>
   );

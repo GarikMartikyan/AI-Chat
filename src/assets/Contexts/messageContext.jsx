@@ -1,6 +1,16 @@
-import react from "@vitejs/plugin-react";
-import React, {createContext} from "react";
+import React, { useContext, useState } from "react";
 
-const messageContext = React.createContext();
+export const MessageContext = React.createContext();
 
-export default function
+export function useChatData() {
+  return useContext(MessageContext);
+}
+
+export default function MessageProvider({ children }) {
+  const [chat, setChat] = useState([]);
+  return (
+    <MessageContext.Provider value={{ chat, setChat }}>
+      {children}
+    </MessageContext.Provider>
+  );
+}
