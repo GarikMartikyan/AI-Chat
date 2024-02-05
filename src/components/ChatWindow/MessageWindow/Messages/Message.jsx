@@ -4,7 +4,7 @@ import TypingAnimation from "./TypingAnimation/TypingAnimation.jsx";
 import Text from "./Text/Text.jsx";
 
 export default function Message({ children, person }) {
-  const [showAnimation, setShowAnimation] = useState(children === false);
+  const [showAnimation, setShowAnimation] = useState(children === "");
 
   const container = person === "user" ? classes.user : classes.chat;
 

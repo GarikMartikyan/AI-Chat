@@ -9,7 +9,7 @@ export default function Text({ children }) {
     function textPrettier(text) {
       text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
       text = text.replace(/```/g, "<hr>");
-      text = text.replaceAll(/\*/g, "-");
+      text = text.replace(/\*/g, "-");
 
       return text;
     }

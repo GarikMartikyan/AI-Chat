@@ -6,12 +6,21 @@
   white-space: pre-wrap;
   word-break: break-word;
 
-
-  //.dot {
-  //  width: 0.4rem;
-  //  height: 0.4rem;
+  //span {
+  //  display: inline-flex;
+  //  align-items: center;
+  //  justify-content: center;
+  //  font-size: 5px;
+  //  vertical-align: middle;
+  //  width: 5px;
+  //  height: 5px;
   //  background-color: $icon;
   //  border-radius: 1rem;
   //}
+
+  b {
+    font-weight: 400;
+    font-size: 1.1rem;
+  }
 
 }

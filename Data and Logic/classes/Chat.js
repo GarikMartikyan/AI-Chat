@@ -13,29 +13,35 @@ export default class Chat {
     this.history = [];
   }
 
-  deliverMessage(MyMessage, SetMessage) {
-    this.#messageToServer(MyMessage, SetMessage);
-    const myMessage = new MessageClass(this.#id++, MyMessage, "user");
+  deliverMessage(MyMessageText, SetMessage) {
+    // debugger;
+    this.#messageToServer(MyMessageText, SetMessage).catch(() =>
+      console.error("sxal a axper"),
+    );
+    const myMessage = new MessageClass(this.#id++, MyMessageText, "user");
     this.history.push(myMessage);
     SetMessage(() => [...this.history]);
   }
 
   #chatMessage(ChatMessage) {
-    // this.history.pop();
     const chatMessage = new MessageClass(this.#id++, ChatMessage, "model");
     this.history.push(chatMessage);
   }
 
   async #messageToServer(Message, SetMessage) {
     console.log("Message render..."); ///////////////////////////
-    const chat = this.#model.startChat({
+    SetMessage(() => [...this.history]);
+    const chat = await this.#model.startChat({
       history: this.history,
       // generationConfig: { maxOutputTokens: 500 },
     });
+
+    // const typing = new MessageClass(this.#id++, "", "model");
+    // this.history.push(typing);
+
     const result = await chat.sendMessage(Message);
     const response = await result.response;
     const chatMessage = response.text();
-    // const chatMessage = text;
     this.#chatMessage(chatMessage);
     console.log(chatMessage);
     console.log("End");
