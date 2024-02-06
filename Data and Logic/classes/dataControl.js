@@ -8,7 +8,7 @@ class Data {
     return this.#data;
   }
 
-  createChat(ChatName = "New Chat") {
+  createChat(ChatName = "New Chat " + this.#id) {
     const chat = new Chat(this.#id++, ChatName);
     this.#data.push(chat);
     return chat;

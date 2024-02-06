@@ -1,17 +1,11 @@
 import classes from "./Sidebar.module.scss";
 import { MessageSquarePlus } from "lucide-react";
-import {
-  chatsList,
-  dataControl,
-} from "../../../Data and Logic/classes/dataControl.js";
 import ChatTitle from "./ChatTitle/ChatTitle.jsx";
-import { useEffect, useRef, useState } from "react"; // console.log(data);
-
-console.log(chatsList);
+import { useEffect, useRef } from "react";
+import { usePageContext } from "../../assets/Contexts/PageContext.jsx";
 
 export default function Sidebar() {
-  console.log("Sidebar render");
-  const [chats, setChats] = useState(chatsList);
+  const { data, dataControl, setData } = usePageContext();
   const addChat = useRef(null);
   useEffect(() => {
     const add = addChat.current;
@@ -19,15 +13,15 @@ export default function Sidebar() {
     add.addEventListener("click", addChatFunc);
 
     function addChatFunc() {
-      console.log(chatsList);
+      console.log(data);
       dataControl.createChat();
-      setChats(() => [...chatsList]);
+      setData(() => [...dataControl.getData()]);
     }
 
     return () => {
       add.removeEventListener("click", addChatFunc);
     };
-  }, [chats]);
+  }, [data]);
   return (
     <div className={classes.container}>
       <div className={classes.header}>
@@ -39,8 +33,8 @@ export default function Sidebar() {
       <section className={classes.chats}>
         <h1>Chats</h1>
         <div className={classes.chatContainer}>
-          {chats.map((item) => (
-            <ChatTitle key={item.id} children={item.name} />
+          {data.map((item) => (
+            <ChatTitle id={item.id} key={item.id} children={item.name} />
           ))}
         </div>
       </section>

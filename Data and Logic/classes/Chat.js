@@ -18,8 +18,9 @@ export default class Chat {
     this.history.push(chatMessage);
     SetMessage(() => [...this.history]);
 
-    console.log(chatMessage.parts);
-    console.log(this.history);
+    console.log("Message is OK");
+    // console.log(chatMessage.parts);
+    // console.log(this.history);
   }
 
   async #messageToServer(Message, SetMessage) {

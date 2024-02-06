@@ -5,6 +5,7 @@ import scrollMyMessageToTop from "../../../assets/functionality/scrollMyMessageT
 
 export default function MessageWindow() {
   const { chat } = useChatData();
+  console.log("Chat IN MessageWindow :", chat);
 
   const isThereMessages = Boolean(chat.length);
   const welcome = <div className={classes.welcome}>How can I help you?</div>;

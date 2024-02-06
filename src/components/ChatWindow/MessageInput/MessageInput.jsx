@@ -7,8 +7,6 @@ import { useChatData } from "../../../assets/Contexts/MessageContext.jsx";
 import handleSubmit from "../../../assets/functionality/handleSubmit.js";
 
 export default function MessageInput() {
-  const chatData = useChatData();
-
   const textareaRef = useRef(null);
   const buttonRef = useRef(null);
   const formRef = useRef(null);
@@ -20,7 +18,7 @@ export default function MessageInput() {
 
   textareaResize(textareaRef);
   disableButtonByText(buttonRef, textareaRef);
-  handleSubmit(refs, chatData);
+  handleSubmit(refs, useChatData());
 
   return (
     <div className={classes.container}>

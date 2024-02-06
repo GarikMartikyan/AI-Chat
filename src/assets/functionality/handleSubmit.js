@@ -3,7 +3,7 @@ import data from "../../../Data and Logic/classes/dataControl.js";
 
 export default function handleSubmit(Reference, Context) {
   const { inputRef, buttonRef, formRef } = Reference;
-  const { chat, setChat } = Context;
+  const { setChat } = Context;
   useEffect(() => {
     let input = inputRef.current;
     let button = buttonRef.current;
