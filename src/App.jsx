@@ -5,8 +5,6 @@ import ChatWindow from "./components/ChatWindow/ChatWindow.jsx";
 import { toggleClasses } from "./assets/functionality/AppFunctionality.js";
 import PageProvider from "./assets/Contexts/PageContext.jsx";
 
-import MessageProvider from "./assets/Contexts/MessageContext.jsx";
-
 function App() {
   console.log("App Rendered");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -23,18 +21,16 @@ function App() {
   return (
     <>
       <PageProvider>
-        <MessageProvider>
-          <nav className={sidebar}>
-            <Sidebar />
-            <SidebarToggleButton
-              isSidebarOpen={sidebarOpen}
-              toggleFunc={() => setSidebarOpen((prv) => !prv)}
-            />
-          </nav>
-          <main className={main}>
-            <ChatWindow />
-          </main>
-        </MessageProvider>
+        <nav className={sidebar}>
+          <Sidebar />
+          <SidebarToggleButton
+            isSidebarOpen={sidebarOpen}
+            toggleFunc={() => setSidebarOpen((prv) => !prv)}
+          />
+        </nav>
+        <main className={main}>
+          <ChatWindow />
+        </main>
       </PageProvider>
     </>
   );

@@ -33,7 +33,7 @@ export default function Sidebar() {
       <section className={classes.chats}>
         <h1>Chats</h1>
         <div className={classes.chatContainer}>
-          {data.map((item) => (
+          {[...data].reverse().map((item) => (
             <ChatTitle id={item.id} key={item.id} children={item.name} />
           ))}
         </div>

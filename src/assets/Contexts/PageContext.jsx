@@ -14,8 +14,8 @@ export default function PageProvider({ children }) {
   const [data, setData] = useState(() => [...chatsList]);
   const [chatNow, setChatNow] = useState({ ...data[0] });
   console.group();
-  console.log("Now data is: ", data);
-  console.log("Now chat is: ", chatNow);
+  console.log("Now data is: ========== ", data);
+  console.log("Now chat is: ", chatNow.name);
   console.groupEnd();
   return (
     <PageContext.Provider
