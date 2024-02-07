@@ -11,7 +11,7 @@ class Data {
     return this.#data;
   }
 
-  createChat(ChatName = "New Chat N: " + this.#id) {
+  createChat(ChatName = "New chat " + this.#id) {
     const chat = new Chat(this.#id++, ChatName, this.#model);
     this.#data.push(chat);
     return chat;

@@ -1,6 +1,6 @@
 import classes from "./SidebarToggleButton.module.scss";
 import { useEffect, useState } from "react";
-import { getTitleByOS } from "../../assets/functionality/ToggleButtonFunctionality.js";
+import { getToogleBtnTitle } from "../../assets/functionality/ToggleButtonFunctionality.js";
 
 export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
   const [title, setTitle] = useState("Close");
@@ -8,8 +8,6 @@ export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
   let toggle = isSidebarOpen ? classes.closeBtn : classes.openBtn;
 
   useEffect(() => {
-    setTitle(getTitleByOS());
-
     document.addEventListener("keydown", handleSidebarToggle);
 
     function handleSidebarToggle(event) {
@@ -34,7 +32,7 @@ export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
     <div
       className={toggle}
       onClick={() => toggleFunc((prev) => !prev)}
-      title={title}
+      title={getToogleBtnTitle()}
     >
       <div className={classes.pt1}></div>
       <div className={classes.pt2}></div>

@@ -47,5 +47,5 @@ export default function handleSubmit(Reference) {
       form.removeEventListener("keypress", keypress);
       form.removeEventListener("submit", submit);
     };
-  }, [chatNow]);
+  }, [chatNow, chat]);
 }
