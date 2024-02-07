@@ -21,7 +21,13 @@ export default function MessageInput() {
 
   return (
     <div className={classes.container}>
-      <form ref={formRef} name="message" action="#" autoComplete="off">
+      <form
+        ref={formRef}
+        name="message"
+        action="#"
+        autoComplete="off"
+        method="POST"
+      >
         <textarea
           ref={textareaRef}
           id="message"

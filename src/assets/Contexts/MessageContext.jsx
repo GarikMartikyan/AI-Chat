@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import { usePageContext } from "./PageContext.jsx";
 
 export const MessageContext = React.createContext();
@@ -13,6 +13,12 @@ export default function MessageProvider({ children }) {
   let [chat, setChat] = useState(() => {
     return dataControl.getData().find((item) => item.id === chatNow.id).history;
   });
+  useLayoutEffect(() => {
+    setChat(() => {
+      return dataControl.getData().find((item) => item.id === chatNow.id)
+        .history;
+    });
+  }, [chatNow]);
   return (
     <MessageContext.Provider value={{ chat, setChat }}>
       {children}

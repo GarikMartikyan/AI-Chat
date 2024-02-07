@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import data from "../../../Data and Logic/classes/dataControl.js";
 import { useChatData } from "../Contexts/MessageContext.jsx";
+import { usePageContext } from "../Contexts/PageContext.jsx";
+import { chatsList } from "../../../Data and Logic/classes/dataControl.js";
 
 export default function handleSubmit(Reference) {
   const { inputRef, buttonRef, formRef } = Reference;
-  // const { setChat } = Context;
   const { chat, setChat } = useChatData();
+  const { chatNow } = usePageContext();
+
   useEffect(() => {
     let input = inputRef.current;
     let button = buttonRef.current;
@@ -30,7 +32,6 @@ export default function handleSubmit(Reference) {
     async function onSubmitActions() {
       if (!input.value.trim().length) return false;
       if (chat.at(-1)?.role === "user") return false;
-      // debugger;
 
       const message = input.value;
 
@@ -38,7 +39,8 @@ export default function handleSubmit(Reference) {
       input.value = "";
       button.disabled = true;
       input.style.height = "1.5rem";
-      await data.deliverMessage(message, setChat);
+      const chatys = chatsList.find((item) => item.id === chatNow.id);
+      chatys.deliverMessage(message, setChat);
     }
 
     return () => {

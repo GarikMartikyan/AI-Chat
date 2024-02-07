@@ -21,4 +21,4 @@ class Data {
 const dataControl = new Data();
 const chat = dataControl.createChat("First Chat");
 const chatsList = dataControl.getData();
-export { chat as default, dataControl, chatsList };
+export { dataControl, chatsList };

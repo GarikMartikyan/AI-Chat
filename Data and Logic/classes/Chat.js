@@ -14,13 +14,22 @@ export default class Chat {
 
   deliverMessage(MyMessage, SetMessage) {
     console.log("History inside Delivery", this.history);
-    this.#messageToServer(MyMessage, SetMessage).catch(() => {
-      const errMessaage =
-        "Something went wrong. This probably happened because you sent a new question without receiving the previous answer.";
-      console.error(errMessaage);
-      alert(errMessaage + "\nPlease reload page");
-      window.location.reload();
-    });
+    console.log(this.name);
+    // debugger;
+    this.#messageToServer(MyMessage, SetMessage)
+      .then((message) => {
+        if (!message.trim().length) {
+          const containue = confirm(
+            "You have not received the chat's answer. This may be a bug that will affect further chat conversations. Refresh the page?",
+          );
+          if (containue) window.location.reload();
+        }
+      })
+      .catch((e) => {
+        console.error("Something went wrong.\n" + e);
+        alert("Something went wrong.\nPlease reload page");
+        window.location.reload();
+      });
     const myMessage = new MessageClass(this.#id++, MyMessage, "user");
     this.history.push(myMessage);
     SetMessage(() => [...this.history]);
@@ -39,12 +48,13 @@ export default class Chat {
     });
     const result = await chat.sendMessage(Message);
     const response = await result.response;
-    const text = response.text();
-    this.#chatMessage(text);
-    console.log(text);
+    const chatMessage = response.text();
+    this.#chatMessage(chatMessage);
+    console.log(chatMessage);
     console.log("End");
     SetMessage(() => [...this.history]);
     console.log(this.history);
+    return chatMessage;
 
     //////////////////setfunc(this.history)
   }

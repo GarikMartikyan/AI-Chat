@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getTitleByOS } from "../../assets/functionality/ToggleButtonFunctionality.js";
 
 export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
+  console.log("Toggle");
   const [title, setTitle] = useState("Close");
 
   let toggle = isSidebarOpen ? classes.closeBtn : classes.openBtn;
@@ -10,9 +11,9 @@ export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
   useEffect(() => {
     setTitle(getTitleByOS());
 
-    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("keydown", handleSidebarToggle);
 
-    function handleKeyPress(event) {
+    function handleSidebarToggle(event) {
       const isPressedCmdOrCtrl = event.ctrlKey || event.metaKey;
       const isPressedShift = event.shiftKey;
       const isPressedS = event.key.toUpperCase() === "S";
@@ -26,7 +27,7 @@ export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
     }
 
     return () => {
-      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener("keydown", handleSidebarToggle);
     };
   }, []);
 

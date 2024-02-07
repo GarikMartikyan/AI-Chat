@@ -7,7 +7,7 @@ import PageProvider from "./assets/Contexts/PageContext.jsx";
 
 function App() {
   console.log("App Rendered");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const { main, sidebar } = toggleClasses(sidebarOpen);
 
   useEffect(() => {

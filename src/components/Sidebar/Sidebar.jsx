@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { usePageContext } from "../../assets/Contexts/PageContext.jsx";
 
 export default function Sidebar() {
-  const { data, dataControl, setData } = usePageContext();
+  const { data, dataControl, setData, chatNow } = usePageContext();
   const addChat = useRef(null);
   useEffect(() => {
     const add = addChat.current;
@@ -34,7 +34,12 @@ export default function Sidebar() {
         <h1>Chats</h1>
         <div className={classes.chatContainer}>
           {[...data].reverse().map((item) => (
-            <ChatTitle id={item.id} key={item.id} children={item.name} />
+            <ChatTitle
+              id={item.id}
+              key={item.id}
+              children={item.name}
+              isActive={item.id === chatNow.id}
+            />
           ))}
         </div>
       </section>
