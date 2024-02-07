@@ -7,14 +7,14 @@ export default class Chat {
   constructor(Id, Name, Model) {
     this.id = Id;
     this.name = Name;
-    this.sended = new Date().valueOf();
+    this.date = new Date().valueOf();
     this.history = [];
     this.#model = Model;
   }
 
-  deliverMessage(MyMessage, SetMessage) {
+  deliverMessage(MyMessage, SetMessage, SetName) {
     console.log(this.name);
-    this.#messageToServer(MyMessage, SetMessage)
+    this.#messageToServer(MyMessage, SetMessage, SetName)
       .then((message) => {
         if (!message.trim().length) {
           const containue = confirm(
@@ -38,22 +38,17 @@ export default class Chat {
     this.history.push(chatMessage);
   }
 
-  async #messageToServer(Message, SetMessage) {
+  async #messageToServer(Message, SetMessage, SetName) {
     console.log("Message render..."); ///////////////////////////
     const chat = this.#model.startChat({
       history: this.history,
-      // generationConfig: { maxOutputTokens: 500 },
     });
     const result = await chat.sendMessage(Message);
     const response = await result.response;
     const chatMessage = response.text();
     this.#chatMessage(chatMessage);
-    console.log(chatMessage);
-    console.log("End");
     SetMessage(() => [...this.history]);
     console.log(this.history);
     return chatMessage;
-
-    //////////////////setfunc(this.history)
   }
 }

@@ -17,13 +17,13 @@ export default function MessageWindow() {
           chat.map((item, _, array) => {
             const animate =
               item.id === array[chat.length - 1]["id"] && item.role === "user";
-
             return (
               <Message
                 id={item.id}
                 children={item.parts}
                 role={item.role}
                 key={item.id}
+                sended={item.date}
                 showAnimation={animate}
               />
             );

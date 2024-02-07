@@ -5,18 +5,14 @@ import { usePageContext } from "../Contexts/PageContext.jsx";
 export default function handleSubmit(Reference) {
   const { inputRef, buttonRef, formRef } = Reference;
   const { chat, setChat } = useChatData();
-  const { chatNow } = usePageContext();
+  const { chatNow, setChatNow } = usePageContext();
 
   useEffect(() => {
     let input = inputRef.current;
     let button = buttonRef.current;
     let form = formRef.current;
 
-    try {
-      document.forms.message.message.focus();
-    } catch (e) {
-      console.error("Message form does not found");
-    }
+    document.forms.message?.message?.focus();
 
     form.addEventListener("keypress", keypress);
 
@@ -44,7 +40,7 @@ export default function handleSubmit(Reference) {
       input.value = "";
       button.disabled = true;
       input.style.height = "1.5rem";
-      chatNow.deliverMessage(message, setChat);
+      chatNow.deliverMessage(message, setChat, setChatNow);
     }
 
     return () => {
