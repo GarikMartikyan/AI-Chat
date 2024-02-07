@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { getTitleByOS } from "../../assets/functionality/ToggleButtonFunctionality.js";
 
 export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
-  console.log("Toggle");
   const [title, setTitle] = useState("Close");
 
   let toggle = isSidebarOpen ? classes.closeBtn : classes.openBtn;

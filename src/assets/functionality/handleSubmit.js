@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useChatData } from "../Contexts/MessageContext.jsx";
 import { usePageContext } from "../Contexts/PageContext.jsx";
-import { chatsList } from "../../../Data and Logic/classes/dataControl.js";
 
 export default function handleSubmit(Reference) {
   const { inputRef, buttonRef, formRef } = Reference;
@@ -12,6 +11,12 @@ export default function handleSubmit(Reference) {
     let input = inputRef.current;
     let button = buttonRef.current;
     let form = formRef.current;
+
+    try {
+      document.forms.message.message.focus();
+    } catch (e) {
+      console.error("Message form does not found");
+    }
 
     form.addEventListener("keypress", keypress);
 
@@ -39,13 +44,12 @@ export default function handleSubmit(Reference) {
       input.value = "";
       button.disabled = true;
       input.style.height = "1.5rem";
-      const chatys = chatsList.find((item) => item.id === chatNow.id);
-      chatys.deliverMessage(message, setChat);
+      chatNow.deliverMessage(message, setChat);
     }
 
     return () => {
       form.removeEventListener("keypress", keypress);
       form.removeEventListener("submit", submit);
     };
-  }, []);
+  }, [chatNow]);
 }

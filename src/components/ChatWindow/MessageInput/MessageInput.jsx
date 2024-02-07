@@ -4,6 +4,7 @@ import { useRef } from "react";
 import textareaResize from "../../../assets/functionality/textareaResize.js";
 import disableButtonByText from "../../../assets/functionality/disableButtonByText.js";
 import handleSubmit from "../../../assets/functionality/handleSubmit.js";
+import { usePageContext } from "../../../assets/Contexts/PageContext.jsx";
 
 export default function MessageInput() {
   const textareaRef = useRef(null);
@@ -14,10 +15,19 @@ export default function MessageInput() {
     buttonRef: buttonRef,
     formRef: formRef,
   };
+  const { chatNow } = usePageContext();
 
   textareaResize(textareaRef);
   disableButtonByText(buttonRef, textareaRef);
-  handleSubmit(refs);
+  handleSubmit(refs, chatNow);
+
+  // useEffect(() => {
+  //   try {
+  //     document.forms.message.message.focus();
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }, [chatNow]);
 
   return (
     <div className={classes.container}>

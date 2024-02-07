@@ -8,17 +8,13 @@ export function useChatData() {
 }
 
 export default function MessageProvider({ children }) {
-  const { chatNow, dataControl } = usePageContext();
-  console.log("CHat now in MessageContext: ", chatNow);
-  let [chat, setChat] = useState(() => {
-    return dataControl.getData().find((item) => item.id === chatNow.id).history;
-  });
+  const { chatNow } = usePageContext();
+  let [chat, setChat] = useState(chatNow.history);
+
   useLayoutEffect(() => {
-    setChat(() => {
-      return dataControl.getData().find((item) => item.id === chatNow.id)
-        .history;
-    });
+    setChat(() => chatNow.history);
   }, [chatNow]);
+
   return (
     <MessageContext.Provider value={{ chat, setChat }}>
       {children}

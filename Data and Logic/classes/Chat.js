@@ -7,15 +7,13 @@ export default class Chat {
   constructor(Id, Name, Model) {
     this.id = Id;
     this.name = Name;
-    this.created = new Date().valueOf();
+    this.sended = new Date().valueOf();
     this.history = [];
     this.#model = Model;
   }
 
   deliverMessage(MyMessage, SetMessage) {
-    console.log("History inside Delivery", this.history);
     console.log(this.name);
-    // debugger;
     this.#messageToServer(MyMessage, SetMessage)
       .then((message) => {
         if (!message.trim().length) {

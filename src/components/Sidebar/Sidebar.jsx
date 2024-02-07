@@ -3,9 +3,13 @@ import { MessageSquarePlus } from "lucide-react";
 import ChatTitle from "./ChatTitle/ChatTitle.jsx";
 import { useEffect, useRef } from "react";
 import { usePageContext } from "../../assets/Contexts/PageContext.jsx";
+import {
+  chatsList,
+  dataControl,
+} from "../../../Data and Logic/classes/dataControl.js";
 
 export default function Sidebar() {
-  const { data, dataControl, setData, chatNow } = usePageContext();
+  const { data, setData, chatNow } = usePageContext();
   const addChat = useRef(null);
   useEffect(() => {
     const add = addChat.current;
@@ -13,15 +17,14 @@ export default function Sidebar() {
     add.addEventListener("click", addChatFunc);
 
     function addChatFunc() {
-      console.log(data);
       dataControl.createChat();
-      setData(() => [...dataControl.getData()]);
+      setData(() => [...chatsList]);
     }
 
     return () => {
       add.removeEventListener("click", addChatFunc);
     };
-  }, [data]);
+  }, []);
   return (
     <div className={classes.container}>
       <div className={classes.header}>
