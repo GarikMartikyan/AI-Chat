@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import data from "../../../Data and Logic/classes/dataControl.js";
+import { useChatData } from "../Contexts/MessageContext.jsx";
 
-export default function handleSubmit(Reference, Context) {
+export default function handleSubmit(Reference) {
   const { inputRef, buttonRef, formRef } = Reference;
-  const { setChat } = Context;
+  // const { setChat } = Context;
+  const { chat, setChat } = useChatData();
   useEffect(() => {
     let input = inputRef.current;
     let button = buttonRef.current;
@@ -27,6 +29,8 @@ export default function handleSubmit(Reference, Context) {
 
     async function onSubmitActions() {
       if (!input.value.trim().length) return false;
+      if (chat.at(-1)?.role === "user") return false;
+      // debugger;
 
       const message = input.value;
 

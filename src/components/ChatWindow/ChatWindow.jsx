@@ -1,7 +1,7 @@
 import classes from "./ChatWindow.module.scss";
 import MessageInput from "./MessageInput/MessageInput.jsx";
 import MessageWindow from "./MessageWindow/MessageWindow.jsx";
-import MessageProvider from "../../assets/Contexts/MessageContext.jsx"; // chat.deliverMessage("Can you help me please?");
+import MessageProvider from "../../assets/Contexts/MessageContext.jsx";
 
 export default function ChatWindow() {
   return (

@@ -8,9 +8,11 @@ export function useChatData() {
 }
 
 export default function MessageProvider({ children }) {
-  const { chatNow, setChatNow } = usePageContext();
+  const { chatNow, dataControl } = usePageContext();
   console.log("CHat now in MessageContext: ", chatNow);
-  let [chat, setChat] = useState(chatNow.history);
+  let [chat, setChat] = useState(() => {
+    return dataControl.getData().find((item) => item.id === chatNow.id).history;
+  });
   return (
     <MessageContext.Provider value={{ chat, setChat }}>
       {children}

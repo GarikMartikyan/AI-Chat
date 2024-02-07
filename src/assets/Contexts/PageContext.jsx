@@ -13,10 +13,13 @@ export function usePageContext() {
 export default function PageProvider({ children }) {
   const [data, setData] = useState(() => [...chatsList]);
   const [chatNow, setChatNow] = useState({ ...data[0] });
-  console.group();
-  console.log("Now data is: ========== ", data);
+  console.log(
+    "_______________________________\n_______________________________",
+  );
   console.log("Now chat is: ", chatNow.name);
-  console.groupEnd();
+  console.log(
+    "_______________________________\n_______________________________",
+  );
   return (
     <PageContext.Provider
       value={{ data, setData, dataControl, chatNow, setChatNow }}

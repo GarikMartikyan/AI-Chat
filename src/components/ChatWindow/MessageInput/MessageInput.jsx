@@ -3,7 +3,6 @@ import { SendHorizontal } from "lucide-react";
 import { useRef } from "react";
 import textareaResize from "../../../assets/functionality/textareaResize.js";
 import disableButtonByText from "../../../assets/functionality/disableButtonByText.js";
-import { useChatData } from "../../../assets/Contexts/MessageContext.jsx";
 import handleSubmit from "../../../assets/functionality/handleSubmit.js";
 
 export default function MessageInput() {
@@ -18,7 +17,7 @@ export default function MessageInput() {
 
   textareaResize(textareaRef);
   disableButtonByText(buttonRef, textareaRef);
-  handleSubmit(refs, useChatData());
+  handleSubmit(refs);
 
   return (
     <div className={classes.container}>
