@@ -26,7 +26,7 @@ export default function ChatTitle({ children, id, isActive }) {
     : `${classes.chat}`;
 
   return (
-    <div ref={refs.title} className={titleClass} id={`title${id}`}>
+    <div ref={refs.title} className={titleClass}>
       <div ref={refs.nameContainer} className={classes.nameContainer}>
         {!editable && <span>{children}</span>}
         {editable && (
