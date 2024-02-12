@@ -6,6 +6,7 @@ import { usePageContext } from "../../assets/Contexts/PageContext.jsx";
 
 export default function ChatWindow() {
   const { chatNow } = usePageContext();
+
   return (
     <div className={classes.container}>
       <header>

@@ -21,14 +21,6 @@ export default function MessageInput() {
   disableButtonByText(buttonRef, textareaRef);
   handleSubmit(refs, chatNow);
 
-  // useEffect(() => {
-  //   try {
-  //     document.forms.message.message.focus();
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }, [chatNow]);
-
   return (
     <div className={classes.container}>
       <form

@@ -51,4 +51,9 @@ export default class Chat {
     console.log(this.history);
     return chatMessage;
   }
+
+  renameChat(Name) {
+    this.name = Name;
+    return this;
+  }
 }

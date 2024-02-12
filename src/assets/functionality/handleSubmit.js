@@ -12,7 +12,7 @@ export default function handleSubmit(Reference) {
     let button = buttonRef.current;
     let form = formRef.current;
 
-    document.forms.message?.message?.focus();
+    form.message.focus();
 
     form.addEventListener("keypress", keypress);
 

@@ -2,15 +2,15 @@
 
 .chat {
   width: 100%;
-  padding: 10px;
+  max-width: 100%;
+  border-radius: 10px;
+  height: 2.5rem;
+  max-height: 2.5rem;
   display: flex;
   align-items: center;
-  gap: 10px;
-  overflow: hidden;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 150ms;
   justify-content: space-between;
+  //gap: 10px;
+  cursor: pointer;
 
   &.active {
     background-color: rgb(#fff, 0.05);
@@ -22,19 +22,48 @@
     color: $textLightHov;
   }
 
-  span {
+  .nameContainer {
+    height: 100%;
+    padding-left: 10px;
     flex: 1;
-    white-space: nowrap;
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 400;
+    display: flex;
+    align-items: center;
     overflow: hidden;
-    text-overflow: ellipsis;
 
+
+    span {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+    }
+
+    input {
+      width: 100%;
+      padding: 2px 0;
+      border: none;
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0);
+      outline: none;
+      border-bottom: 1px solid $iconDisabled;
+      color: $textLight;
+      font-size: 1rem;
+      font-weight: 400;
+    }
   }
 
-  svg {
-    width: 1.4rem;
-    height: 1.4rem;
+  .iconContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
   }
 }

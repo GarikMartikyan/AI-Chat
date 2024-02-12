@@ -1,24 +1,49 @@
 import classes from "./ChatTitle.module.scss";
-import { MessageSquareText } from "lucide-react";
 import { usePageContext } from "../../../assets/Contexts/PageContext.jsx";
-import { chatsList } from "../../../../Data and Logic/classes/dataControl.js";
+import { useRef, useState } from "react";
+import { Check, SquarePen } from "lucide-react";
+import changeChatName from "../../../assets/functionality/ChatTitleFunctionality.js";
 
 export default function ChatTitle({ children, id, isActive }) {
   const { chatNow, setChatNow } = usePageContext();
+
+  const [editable, setEditable] = useState(false);
+
+  const refs = {
+    title: useRef(null),
+    input: useRef(null),
+    nameContainer: useRef(null),
+    edit: useRef(null),
+    iconContainer: useRef(null),
+  };
+
+  const states = { chatNow, setChatNow, editable, setEditable };
+
+  changeChatName(states, refs, children, id);
+
   const titleClass = isActive
     ? `${classes.chat} ${classes.active}`
     : `${classes.chat}`;
 
-  function handleClick() {
-    if (chatNow.history.at(-1)?.role === "user") return;
-    if (chatNow.id === id) return;
-    setChatNow(() => chatsList.find((item) => item.id === id));
-  }
-
   return (
-    <div onClick={handleClick} className={titleClass}>
-      <MessageSquareText />
-      <span>{children}</span>
+    <div ref={refs.title} className={titleClass} id={`title${id}`}>
+      <div ref={refs.nameContainer} className={classes.nameContainer}>
+        {!editable && <span>{children}</span>}
+        {editable && (
+          <input
+            ref={refs.input}
+            className="nameInput"
+            name="cahtName"
+            type="text"
+            maxLength={23}
+            autoComplete="off"
+          />
+        )}
+      </div>
+      <div ref={refs.iconContainer} className={classes.iconContainer}>
+        {editable && <Check />}
+        {!editable && <SquarePen />}
+      </div>
     </div>
   );
 }

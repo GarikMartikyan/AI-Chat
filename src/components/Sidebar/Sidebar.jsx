@@ -1,17 +1,13 @@
 import classes from "./Sidebar.module.scss";
 import { MessageSquarePlus } from "lucide-react";
 import ChatTitle from "./ChatTitle/ChatTitle.jsx";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { usePageContext } from "../../assets/Contexts/PageContext.jsx";
-import {
-  chatsList,
-  dataControl,
-} from "../../../Data and Logic/classes/dataControl.js";
+import { dataControl } from "../../../Data and Logic/classes/dataControl.js";
 import { getNewChatTitle } from "../../assets/functionality/ToggleButtonFunctionality.js";
 
 export default function Sidebar() {
-  const { data, setData, chatNow, setChatNow } = usePageContext();
-  const [title, setTitle] = useState("New Chat");
+  const { data, chatNow, setChatNow } = usePageContext();
   const addChat = useRef(null);
 
   useEffect(() => {
@@ -20,10 +16,7 @@ export default function Sidebar() {
     add.addEventListener("click", addChatFunc);
 
     function addChatFunc() {
-      if (chatNow.history.at(-1)?.role === "user") return;
-      console.log(chatNow.history.at(-1));
       const newChat = dataControl.createChat();
-      setData(() => [...chatsList]);
       setChatNow(() => newChat);
     }
 
