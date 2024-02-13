@@ -1,8 +1,7 @@
-# React + Vite
+# AI Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Our project, titled "Intelligent Conversational Interface," is a cutting-edge chat application developed using React and
+powered by the Google AI Studio API. This innovative solution brings the power of artificial intelligence to the
+forefront, providing users with an intelligent and engaging conversational experience.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- You can test it with this link [AI Chat](https://ai-chat-by-garik.vercel.app/)
