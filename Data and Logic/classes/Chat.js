@@ -1,15 +1,16 @@
 import MessageClass from "./Message.js";
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai"; // Access your API key (see "Set up your API key" above)
 
 export default class Chat {
-  #model;
   #id = 0;
+  #genAI = new GoogleGenerativeAI("AIzaSyBMdhp4A6kwwJfM-axyI99niGkuIH2fo3s");
+  #model = this.#genAI.getGenerativeModel({ model: "gemini-pro" });
 
-  constructor(Id, Name, Model) {
+  constructor(Id, Name) {
     this.id = Id;
     this.name = Name;
     this.date = new Date().valueOf();
     this.history = [];
-    this.#model = Model;
   }
 
   deliverMessage(MyMessage, SetMessage, SetName) {

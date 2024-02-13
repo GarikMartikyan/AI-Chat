@@ -21,7 +21,9 @@ export default function changeChatName(States, References, Name, Id) {
         if (!input.value.trim().length) return;
         console.log(chatNow.id + 1); /////////////////////////////////
         const chat = chatsList[Id].renameChat(input.value);
-        setChatNow(() => chatsList[Id]);
+        setChatNow((prv) => {
+          return { ...prv };
+        });
       }
 
       function changeNameOnEnter(e) {
