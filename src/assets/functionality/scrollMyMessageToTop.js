@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { usePageContext } from "../Contexts/PageContext.jsx";
 
-export default function scrollMyMessageToTop(ChatData) {
+export default function scrollMyMessageToTop() {
+  const { chatNow, state } = usePageContext();
   useEffect(() => {
-    let myLastMessageId = ChatData.findLastIndex(
+    let myLastMessageId = chatNow.history.findLastIndex(
       (item) => item.role === "user",
     );
 
@@ -16,5 +18,5 @@ export default function scrollMyMessageToTop(ChatData) {
         block: "start",
       });
     }
-  }, [ChatData]);
+  }, [chatNow, state]);
 }

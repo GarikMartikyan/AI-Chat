@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { useChatData } from "../Contexts/MessageContext.jsx";
 import { usePageContext } from "../Contexts/PageContext.jsx";
 
 export default function handleSubmit(Reference) {
   const { inputRef, buttonRef, formRef } = Reference;
-  const { chat, setChat } = useChatData();
-  const { chatNow, setChatNow } = usePageContext();
+  const { chatNow, setStateUpdate } = usePageContext();
 
   useEffect(() => {
     let input = inputRef.current;
@@ -32,7 +30,7 @@ export default function handleSubmit(Reference) {
 
     async function onSubmitActions() {
       if (!input.value.trim().length) return false;
-      if (chat.at(-1)?.role === "user") return false;
+      if (chatNow.history.at(-1)?.role === "user") return false;
 
       const message = input.value;
 
@@ -40,12 +38,12 @@ export default function handleSubmit(Reference) {
       input.value = "";
       button.disabled = true;
       input.style.height = "1.5rem";
-      chatNow.deliverMessage(message, setChat, setChatNow);
+      chatNow.deliverMessage(message, setStateUpdate);
     }
 
     return () => {
       form.removeEventListener("keypress", keypress);
       form.removeEventListener("submit", submit);
     };
-  }, [chatNow, chat]);
+  }, [chatNow]);
 }

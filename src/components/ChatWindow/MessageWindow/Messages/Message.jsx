@@ -1,7 +1,6 @@
 import classes from "./Message.module.scss";
 import TypingAnimation from "./TypingAnimation/TypingAnimation.jsx";
 import Text from "./Text/Text.jsx";
-import { getSendedTime } from "../../../../assets/functionality/generalFunctions.js";
 
 export default function Message({ children, role, id, sended, showAnimation }) {
   const container = role === "user" ? classes.user : classes.chat;
@@ -10,8 +9,7 @@ export default function Message({ children, role, id, sended, showAnimation }) {
     <>
       <div id={id} className={container}>
         <div className={classes.message}>
-          <Text children={children} role={role} />
-          <div className={classes.sendedTime}>{getSendedTime(sended)}</div>
+          <Text children={children} role={role} sended={sended} />
         </div>
       </div>
       {showAnimation && (

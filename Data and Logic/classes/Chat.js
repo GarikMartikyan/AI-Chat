@@ -1,21 +1,20 @@
 import MessageClass from "./Message.js";
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai"; // Access your API key (see "Set up your API key" above)
 
 export default class Chat {
+  #model;
   #id = 0;
-  #genAI = new GoogleGenerativeAI("AIzaSyBMdhp4A6kwwJfM-axyI99niGkuIH2fo3s");
-  #model = this.#genAI.getGenerativeModel({ model: "gemini-pro" });
 
-  constructor(Id, Name) {
+  constructor(Id, Name, Model) {
     this.id = Id;
     this.name = Name;
     this.date = new Date().valueOf();
     this.history = [];
+    this.#model = Model;
   }
 
-  deliverMessage(MyMessage, SetMessage, SetName) {
+  deliverMessage(MyMessage, SetStateUpdate) {
     console.log(this.name);
-    this.#messageToServer(MyMessage, SetMessage, SetName)
+    this.#messageToServer(MyMessage, SetStateUpdate)
       .then((message) => {
         if (!message.trim().length) {
           const containue = confirm(
@@ -31,7 +30,7 @@ export default class Chat {
       });
     const myMessage = new MessageClass(this.#id++, MyMessage, "user");
     this.history.push(myMessage);
-    SetMessage(() => [...this.history]);
+    SetStateUpdate((prv) => !prv);
   }
 
   #chatMessage(ChatMessage) {
@@ -39,7 +38,7 @@ export default class Chat {
     this.history.push(chatMessage);
   }
 
-  async #messageToServer(Message, SetMessage, SetName) {
+  async #messageToServer(Message, SetStateUpdate) {
     console.log("Message render..."); ///////////////////////////
     const chat = this.#model.startChat({
       history: this.history,
@@ -48,7 +47,7 @@ export default class Chat {
     const response = await result.response;
     const chatMessage = response.text();
     this.#chatMessage(chatMessage);
-    SetMessage(() => [...this.history]);
+    SetStateUpdate((prv) => !prv);
     console.log(this.history);
     return chatMessage;
   }

@@ -1,14 +1,15 @@
 import classes from "./MessageWindow.module.scss";
 import Message from "./Messages/Message.jsx";
-import { useChatData } from "../../../assets/Contexts/MessageContext.jsx";
 import scrollMyMessageToTop from "../../../assets/functionality/scrollMyMessageToTop.js";
+import { usePageContext } from "../../../assets/Contexts/PageContext.jsx";
+import Welcome from "./Welcome/Welcome.jsx";
 
 export default function MessageWindow() {
-  const { chat } = useChatData();
+  const { chatNow } = usePageContext();
+  const chat = chatNow.history;
 
+  scrollMyMessageToTop();
   const isThereMessages = Boolean(chat.length);
-  const welcome = <div className={classes.welcome}>How can I help you?</div>;
-  scrollMyMessageToTop(chat);
 
   return (
     <div className={classes.scrollWrraper}>
@@ -28,7 +29,7 @@ export default function MessageWindow() {
               />
             );
           })}
-        {!isThereMessages && welcome}
+        {!isThereMessages && <Welcome />}
       </section>
     </div>
   );

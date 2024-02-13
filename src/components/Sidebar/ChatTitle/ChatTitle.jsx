@@ -5,19 +5,17 @@ import { Check, SquarePen } from "lucide-react";
 import changeChatName from "../../../assets/functionality/ChatTitleFunctionality.js";
 
 export default function ChatTitle({ children, id, isActive }) {
-  const { chatNow, setChatNow } = usePageContext();
+  const { chatNow, setChatNow, setStateUpdate } = usePageContext();
 
   const [editable, setEditable] = useState(false);
 
   const refs = {
-    title: useRef(null),
     input: useRef(null),
     nameContainer: useRef(null),
-    edit: useRef(null),
     iconContainer: useRef(null),
   };
 
-  const states = { chatNow, setChatNow, editable, setEditable };
+  const states = { chatNow, setChatNow, editable, setEditable, setStateUpdate };
 
   changeChatName(states, refs, children, id);
 
@@ -26,7 +24,7 @@ export default function ChatTitle({ children, id, isActive }) {
     : `${classes.chat}`;
 
   return (
-    <div ref={refs.title} className={titleClass}>
+    <div className={titleClass}>
       <div ref={refs.nameContainer} className={classes.nameContainer}>
         {!editable && <span>{children}</span>}
         {editable && (

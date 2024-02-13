@@ -7,36 +7,34 @@ import handleSubmit from "../../../assets/functionality/handleSubmit.js";
 import { usePageContext } from "../../../assets/Contexts/PageContext.jsx";
 
 export default function MessageInput() {
-  const textareaRef = useRef(null);
-  const buttonRef = useRef(null);
-  const formRef = useRef(null);
-  const refs = {
-    inputRef: textareaRef,
-    buttonRef: buttonRef,
-    formRef: formRef,
-  };
   const { chatNow } = usePageContext();
 
-  textareaResize(textareaRef);
-  disableButtonByText(buttonRef, textareaRef);
+  const refs = {
+    inputRef: useRef(null),
+    buttonRef: useRef(null),
+    formRef: useRef(null),
+  };
+
+  textareaResize(refs);
+  disableButtonByText(refs);
   handleSubmit(refs, chatNow);
 
   return (
     <div className={classes.container}>
       <form
-        ref={formRef}
+        ref={refs.formRef}
         name="message"
         action="#"
         autoComplete="off"
         method="POST"
       >
         <textarea
-          ref={textareaRef}
+          ref={refs.inputRef}
           id="message"
           name="message"
           placeholder="Write message..."
         ></textarea>
-        <button ref={buttonRef} id="submitBtn" type="submit">
+        <button ref={refs.buttonRef} id="submitBtn" type="submit">
           <SendHorizontal />
         </button>
       </form>

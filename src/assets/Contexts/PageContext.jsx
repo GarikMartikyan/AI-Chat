@@ -8,11 +8,13 @@ export function usePageContext() {
 }
 
 export default function PageProvider({ children }) {
+  const [state, setStateUpdate] = useState(true);
   const [chatNow, setChatNow] = useState(chatsList[0]);
-  const data = chatsList;
   console.log("Page Content Rendered");
   return (
-    <PageContext.Provider value={{ data, chatNow, setChatNow }}>
+    <PageContext.Provider
+      value={{ chatNow, setChatNow, state, setStateUpdate }}
+    >
       {children}
     </PageContext.Provider>
   );

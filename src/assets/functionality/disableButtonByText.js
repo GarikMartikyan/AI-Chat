@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-export default function (ButtonRef, TextFieldRef) {
+export default function (References) {
   useEffect(() => {
-    const textField = TextFieldRef.current;
-    const button = ButtonRef.current;
+    const textField = References.inputRef.current;
+    const button = References.buttonRef.current;
 
     if (!textField.value.trim().length) {
       button.disabled = true;

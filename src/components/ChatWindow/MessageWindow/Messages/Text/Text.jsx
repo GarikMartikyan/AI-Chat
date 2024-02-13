@@ -1,11 +1,16 @@
 import classes from "./Text.module.scss";
 import { useEffect, useRef } from "react";
+import { getSendedTime } from "../../../../../assets/functionality/generalFunctions.js";
 
-export default function Text({ children, role }) {
+export default function Text({ children, role, sended }) {
   const text = useRef(null);
+
   useEffect(() => {
+    const p = text.current;
+    if (children.length < 15) {
+      p.style.paddingRight = "3.7rem";
+    }
     if (role === "model") {
-      const p = text.current;
       p.innerHTML = textPrettier(p.innerHTML);
     }
 
@@ -16,10 +21,13 @@ export default function Text({ children, role }) {
 
       return text;
     }
-  }, []);
+  }, [children]);
   return (
-    <div ref={text} className={classes.text}>
-      {children}
-    </div>
+    <>
+      <div ref={text} className={classes.text}>
+        {children}
+      </div>
+      <div className={classes.sendedTime}>{getSendedTime(sended)}</div>
+    </>
   );
 }

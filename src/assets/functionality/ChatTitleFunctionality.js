@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { chatsList } from "../../../Data and Logic/classes/dataControl.js";
 
 export default function changeChatName(States, References, Name, Id) {
-  const { chatNow, setChatNow, editable, setEditable } = States;
+  const { chatNow, setChatNow, editable, setEditable, setStateUpdate } = States;
   useEffect(() => {
     const input = References.input.current;
     const icon = References.iconContainer.current;
@@ -20,10 +20,8 @@ export default function changeChatName(States, References, Name, Id) {
         if (input.value === Name) return;
         if (!input.value.trim().length) return;
         console.log(chatNow.id + 1); /////////////////////////////////
-        const chat = chatsList[Id].renameChat(input.value);
-        setChatNow((prv) => {
-          return { ...prv };
-        });
+        chatsList[Id].renameChat(input.value);
+        setStateUpdate((prv) => !prv);
       }
 
       function changeNameOnEnter(e) {
