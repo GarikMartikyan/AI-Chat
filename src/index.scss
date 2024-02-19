@@ -9,12 +9,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100svh;
+  height: 100dvh;
   background: $bgLight;
 }
 
 #root {
-  height: 100svh;
+  height: 100dvh;
   padding: 0;
   display: flex;
   justify-content: right;
