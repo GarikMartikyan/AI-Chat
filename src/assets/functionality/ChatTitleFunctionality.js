@@ -7,6 +7,7 @@ export default function changeChatName(States, References, Name, Id) {
     const input = References.input.current;
     const icon = References.iconContainer.current;
     const name = References.nameContainer.current;
+    const title = References.title.current;
 
     if (editable) {
       input.value = Name;
@@ -19,7 +20,6 @@ export default function changeChatName(States, References, Name, Id) {
         setEditable(() => false);
         if (input.value === Name) return;
         if (!input.value.trim().length) return;
-        console.log(chatNow.id + 1); /////////////////////////////////
         chatsList[Id].renameChat(input.value);
         setStateUpdate((prv) => !prv);
       }

@@ -12,6 +12,7 @@ export default function AddChat(AddIconRef) {
 
     function addChatFunc() {
       const newChat = dataControl.createChat();
+      if (!newChat) return;
       setChatNow(() => newChat);
     }
 

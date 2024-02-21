@@ -13,7 +13,6 @@ export default class Chat {
   }
 
   deliverMessage(MyMessage, SetStateUpdate) {
-    console.log(this.name);
     this.#messageToServer(MyMessage, SetStateUpdate)
       .then((message) => {
         if (!message.trim().length) {
@@ -39,7 +38,6 @@ export default class Chat {
   }
 
   async #messageToServer(Message, SetStateUpdate) {
-    console.log("Message render..."); ///////////////////////////
     const chat = this.#model.startChat({
       history: this.history,
     });
@@ -48,7 +46,6 @@ export default class Chat {
     const chatMessage = response.text();
     this.#chatMessage(chatMessage);
     SetStateUpdate((prv) => !prv);
-    console.log(this.history);
     return chatMessage;
   }
 

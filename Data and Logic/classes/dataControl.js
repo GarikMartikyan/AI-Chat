@@ -3,15 +3,17 @@ import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai"; // A
 
 class Data {
   #id = 0;
-  #data = [];
   #genAI = new GoogleGenerativeAI("AIzaSyBMdhp4A6kwwJfM-axyI99niGkuIH2fo3s");
   #model = this.#genAI.getGenerativeModel({ model: "gemini-pro" });
+  #data = [new Chat(this.#id++, "First Chat", this.#model)];
 
   getData() {
     return this.#data;
   }
 
-  createChat(ChatName = "New chat " + this.#id) {
+  createChat(ChatName = "New Chat") {
+    const lastChatHistory = this.#data.at(-1).history;
+    if (!lastChatHistory.length) return false;
     const chat = new Chat(this.#id++, ChatName, this.#model);
     this.#data.push(chat);
     return chat;
@@ -19,6 +21,5 @@ class Data {
 }
 
 const dataControl = new Data();
-dataControl.createChat("First chat");
 const chatsList = dataControl.getData();
 export { dataControl, chatsList };

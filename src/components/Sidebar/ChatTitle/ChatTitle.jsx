@@ -13,6 +13,7 @@ export default function ChatTitle({ children, id, isActive }) {
     input: useRef(null),
     nameContainer: useRef(null),
     iconContainer: useRef(null),
+    title: useRef(null),
   };
 
   const states = { chatNow, setChatNow, editable, setEditable, setStateUpdate };
@@ -24,7 +25,7 @@ export default function ChatTitle({ children, id, isActive }) {
     : `${classes.chat}`;
 
   return (
-    <div className={titleClass}>
+    <div ref={refs.title} id="title" className={titleClass}>
       <div ref={refs.nameContainer} className={classes.nameContainer}>
         {!editable && <span>{children}</span>}
         {editable && (
