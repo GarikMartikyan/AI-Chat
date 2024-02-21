@@ -6,7 +6,7 @@ import PageProvider from "./assets/Contexts/PageContext.jsx";
 import SidebarToggleButton from "./components/SidebarToggleButton/SidebarToggleButton.jsx";
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { main, sidebar } = toggleClasses(sidebarOpen);
 
   return (
