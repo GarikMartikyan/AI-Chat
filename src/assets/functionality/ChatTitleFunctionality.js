@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { chatsList } from "../../../Data and Logic/classes/dataControl.js";
 
 export default function changeChatName(States, References, Name, Id) {
   const { chatNow, setChatNow, editable, setEditable, setStateUpdate } = States;
-  useEffect(() => {
+  useLayoutEffect(() => {
     const input = References.input.current;
     const icon = References.iconContainer.current;
     const name = References.nameContainer.current;
@@ -13,8 +13,16 @@ export default function changeChatName(States, References, Name, Id) {
       input.value = Name;
       input.focus();
 
+      document.addEventListener("pointerdown", chnageNameOnClickOutside);
       input.addEventListener("keydown", changeNameOnEnter);
       icon.addEventListener("click", changeNameOnClick);
+
+      function chnageNameOnClickOutside(e) {
+        if (editable) {
+          if (e.target.closest("#title") !== title) changeNameOnClick();
+          document.removeEventListener("pointerdown", chnageNameOnClickOutside);
+        }
+      }
 
       function changeNameOnClick() {
         setEditable(() => false);
