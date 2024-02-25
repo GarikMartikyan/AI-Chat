@@ -10,11 +10,16 @@ export function usePageContext() {
 export default function PageProvider({ children }) {
   const [state, setStateUpdate] = useState(true);
   const [chatNow, setChatNow] = useState(chatsList[0]);
-  return (
-    <PageContext.Provider
-      value={{ chatNow, setChatNow, state, setStateUpdate }}
-    >
-      {children}
-    </PageContext.Provider>
-  );
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const values = {
+    chatNow,
+    setChatNow,
+    state,
+    setStateUpdate,
+    sidebarOpen,
+    setSidebarOpen,
+  };
+
+  return <PageContext.Provider value={values}>{children}</PageContext.Provider>;
 }

@@ -1,8 +1,11 @@
 import classes from "../../App.module.scss";
+import { usePageContext } from "../Contexts/PageContext.jsx";
 
-export function toggleClasses(IsSidebarOpen) {
+export function toggleClasses() {
+  const { sidebarOpen } = usePageContext();
+
   let sidebar, main;
-  if (IsSidebarOpen) {
+  if (sidebarOpen) {
     sidebar = classes.sidebar;
     main = classes.main;
   } else {

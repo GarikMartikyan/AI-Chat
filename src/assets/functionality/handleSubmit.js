@@ -3,14 +3,26 @@ import { usePageContext } from "../Contexts/PageContext.jsx";
 
 export default function handleSubmit(Reference) {
   const { inputRef, buttonRef, formRef } = Reference;
-  const { chatNow, setStateUpdate } = usePageContext();
+  const { chatNow, setStateUpdate, setSidebarOpen, sidebarOpen } =
+    usePageContext();
 
   useEffect(() => {
     let input = inputRef.current;
     let button = buttonRef.current;
     let form = formRef.current;
+    const mobileWidth = 770;
 
-    form.message.focus();
+    input.focus();
+
+    if (window.innerWidth < mobileWidth) {
+      if (sidebarOpen) {
+        input.blur();
+      }
+
+      input.addEventListener("focus", () => {
+        setSidebarOpen(() => false);
+      });
+    }
 
     form.addEventListener("keypress", keypress);
 

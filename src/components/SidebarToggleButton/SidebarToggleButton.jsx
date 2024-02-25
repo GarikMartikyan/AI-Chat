@@ -1,11 +1,12 @@
 import classes from "./SidebarToggleButton.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getToogleBtnTitle } from "../../assets/functionality/ToggleButtonFunctionality.js";
+import { usePageContext } from "../../assets/Contexts/PageContext.jsx";
 
 export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
-  const [title, setTitle] = useState("Close");
+  const { sidebarOpen, setSidebarOpen } = usePageContext();
 
-  let toggle = isSidebarOpen ? classes.closeBtn : classes.openBtn;
+  let toggle = sidebarOpen ? classes.closeBtn : classes.openBtn;
 
   useEffect(() => {
     document.addEventListener("keydown", handleSidebarToggle);
@@ -19,7 +20,7 @@ export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
 
       if (SidebarToggleShortcut) {
         event.preventDefault();
-        toggleFunc();
+        setSidebarOpen((prv) => !prv);
       }
     }
 
@@ -31,7 +32,7 @@ export default function SidebarToggleButton({ toggleFunc, isSidebarOpen }) {
   return (
     <div
       className={toggle}
-      onClick={() => toggleFunc((prev) => !prev)}
+      onClick={() => setSidebarOpen((prv) => !prv)}
       title={getToogleBtnTitle()}
     >
       <div className={classes.pt1}></div>
